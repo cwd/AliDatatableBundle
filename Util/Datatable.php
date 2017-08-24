@@ -69,7 +69,7 @@ class Datatable
     {
         $this->_container        = $container;
         $this->_config           = $this->_container->getParameter('ali_datatable');
-        $this->_request          = $this->_container->get('request');
+        $this->_request          = $this->_container->get('request_stack')->getCurrentRequest();
         self::$_current_instance = $this;
         $this->_applyDefaults();
     }
