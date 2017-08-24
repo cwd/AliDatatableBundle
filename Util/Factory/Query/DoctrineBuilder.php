@@ -63,7 +63,7 @@ class DoctrineBuilder implements QueryInterface
     {
         $this->container    = $container;
         $this->em           = $em;
-        $this->request      = $this->container->get('request');
+        $this->request      = $this->container->get('request_stack')->getCurrentRequest();
         $this->queryBuilder = $this->em->createQueryBuilder();
     }
 
