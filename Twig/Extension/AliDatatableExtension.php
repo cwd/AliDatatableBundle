@@ -5,6 +5,8 @@ namespace Ali\DatatableBundle\Twig\Extension;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Ali\DatatableBundle\Util\Datatable;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 class AliDatatableExtension extends \Twig_Extension
 {
@@ -84,7 +86,7 @@ class AliDatatableExtension extends \Twig_Extension
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))
-                        ->add('id', 'hidden')
+                        ->add('id', HiddenType::class)
                         ->getForm();
     }
 
@@ -97,7 +99,7 @@ class AliDatatableExtension extends \Twig_Extension
      */
     public function createFormBuilder($data = null, array $options = array())
     {
-        return $this->_container->get('form.factory')->createBuilder('form', $data, $options);
+        return $this->_container->get('form.factory')->createBuilder(FormType::class, $data, $options);
     }
 
     /**
